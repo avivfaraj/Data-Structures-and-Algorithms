@@ -1,6 +1,6 @@
 import random
 import time
-from General import is_sorted
+from General import is_sorted, test
 
 
 def merge(arr: "List", start: int, middle: int, stop: int) -> None:
@@ -60,44 +60,9 @@ def merge_sort(arr: "List", start: int, stop: int) -> None:
 	merge(arr, start, middle, stop)
 
 
-def test(num: int) -> None:
-
-	"""
-	Run test of the quick sort algorithm
-
-	Input:
-	num   -> Number of random elements in the array
-
-	Output:
-	** 
-	   The function prints the unsorted array, 
-	   sorted array, and the runtime of the algorithm
-	**
-
-	"""
-
-	# Array with random numbers
-	arr = [random.randrange(1,num * 2) for i in range(num)]
-
-	# Print array before sorting
-	print(f"Unsorted array: {arr}")
-	print()
-	# Measure time of sorting
-	start = time.time()
-
-	# Sort
+def msort(arr: "List"):
 	merge_sort(arr, 0, len(arr)-1)
-
-	# Measure time of sorting
-	stop = time.time()
-	if is_sorted(arr):
-		# Print sorted array
-		print(f"Sorted Array: {arr}")
-		print()
-		print(f"Runtime: {stop-start:.2f} seconds")
-	else:
-		print("Something went wrong....")
 
 
 if __name__ == "__main__":
-	test(1000)
+	test(10,msort)

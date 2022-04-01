@@ -35,3 +35,41 @@ def is_sorted(arr: "List") -> bool:
 
 	return True
 
+def test(num: int, fun) -> None:
+
+	"""
+	Run test of the quick sort algorithm
+
+	Input:
+	num   -> Number of random elements in the array
+
+	Output:
+	** 
+	   The function prints the unsorted array, 
+	   sorted array, and the runtime of the algorithm
+	**
+
+	"""
+
+	# Array with random numbers
+	arr = [random.randrange(1,num * 2) for i in range(num)]
+
+	# Print array before sorting
+	print(f"Unsorted array: {arr}")
+	print()
+	# Measure time of sorting
+	start = time.time()
+
+	# Sort
+	fun(arr)
+
+	# Measure time of sorting
+	stop = time.time()
+
+	if is_sorted(arr):
+		# Print sorted array
+		print(f"Sorted Array: {arr}")
+		print()
+		print(f"Runtime: {stop-start:.2f} seconds")
+	else:
+		print("Something went wrong....")
