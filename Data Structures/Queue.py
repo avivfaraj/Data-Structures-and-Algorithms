@@ -45,20 +45,21 @@ class Queue():
 			self.tail = None
 
 
-	def print(self) -> None:
+	def __repr__(self) -> None:
+
+		
 
 		if self.front() == None:
-			print("Queue is Empty!")
-			return
+			return "Queue is Empty!"
 
-		print("Head -> ", end = "")
+		output = "Head -> "
 		helper_node = self.head
 
 		while helper_node != None:
-			print(helper_node.value, end = " -> ")
+			output += str(helper_node.value) + " -> " 
 			helper_node = helper_node.next
 
-		print("Tail")
+		return output + "Tail"
 
 
 if __name__ == "__main__":
@@ -69,7 +70,7 @@ if __name__ == "__main__":
 	q.enqueue(20)
 	q.enqueue(100)
 
-	q.print()
+	print(q)
 
 
 
