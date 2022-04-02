@@ -4,7 +4,7 @@ class Stack():
 
 	def __init__(self):
 		self.head = None
-
+		self.size = 0
 
 	def is_empty(self) -> bool:
 		if self.head == None:
@@ -23,6 +23,7 @@ class Stack():
 		newNode = Node(value, self.head)
 
 		self.head = newNode
+		self.size += 1
 
 	def pop(self) -> None:
 
@@ -30,6 +31,15 @@ class Stack():
 			return
 
 		self.head = self.head.next
+		self.size -=1 
+
+	def __repr__(self) -> str:
+		pass
+
+	def __len__(self) -> int:
+		return self.size
+
+
 
 
 if __name__ == "__main__":
@@ -42,6 +52,6 @@ if __name__ == "__main__":
 	print(st.top())
 	st.pop()
 	print(st.top())
-
+	print(len(st))
 
 

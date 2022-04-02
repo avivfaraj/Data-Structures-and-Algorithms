@@ -6,6 +6,7 @@ class Deque():
 	def __init__(self):
 		self.head = None
 		self.tail = None
+		self.size = 0
 
 	def is_empty(self) -> bool:
 		if self.head == None:
@@ -38,6 +39,8 @@ class Deque():
 			newNode.next = self.head
 			self.head = newNode
 
+		self.size += 1
+
 	def push_back(self, value) -> None:
 
 		# New node with value, but next,previous -> None
@@ -51,6 +54,7 @@ class Deque():
 			newNode.previous = self.tail
 			self.tail = newNode
 
+		self.size += 1
 
 	def pop_front(self) -> None:
 
@@ -59,12 +63,16 @@ class Deque():
 
 		if self.head == self.tail:
 			self.head, self.tail = None, None
+			self.size = 0
 			return
 
 		self.head = self.head.next
 
 		if self.head != None:
 			self.head.previous = None
+
+		self.size -= 1
+
 
 	def pop_back(self) -> None:
 
@@ -73,12 +81,15 @@ class Deque():
 
 		if self.head == self.tail:
 			self.head, self.tail = None, None
+			self.size = 0
 			return
 
 		self.tail = self.tail.previous
 
 		if self.tail != None:
 			self.tail.next = None
+
+		self.size -= 1
 
 	def get_item(self, forward = True) -> int:
 
@@ -109,6 +120,10 @@ class Deque():
 		return output[:-2] + " Tail"
 
 
+	def __len__(self) -> int:
+		return self.size
+
+
 if __name__ == "__main__":
 	q = Deque()
 	q.push_front(10)
@@ -122,3 +137,8 @@ if __name__ == "__main__":
 	# q.pop_front()
 	print(q)
 	print([i for i in q.get_item(False)])
+	q.pop_front()
+	q.pop_front()
+	print(len(q))
+	q.pop_back()
+	print(len(q))
