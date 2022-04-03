@@ -1,7 +1,7 @@
 from Test import test_sorted
 from typing import Optional, List
 
-def binary_search(arr: List, item: int) -> Optional[int]:
+def binary_search(arr: List[int], item: int) -> Optional[int]:
 	
 	start, stop = 0, len(arr) - 1
 
@@ -23,11 +23,11 @@ def binary_search(arr: List, item: int) -> Optional[int]:
 
 	
 
-def binary_recursive(arr: List, item: int) -> Optional[int]:
+def binary_recursive(arr: List[int], item: int) -> Optional[int]:
 	return recursive_iteration(arr, item, 0, len(arr) - 1)
 
 
-def recursive_iteration(arr: List, item: int, start: int, stop: int) -> Optional[int]:
+def recursive_iteration(arr: List[int], item: int, start: int, stop: int) -> Optional[int]:
 
 	if start > stop:
 		return
