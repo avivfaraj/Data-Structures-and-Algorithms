@@ -116,19 +116,44 @@ class Queue():
 		return self.size
 
 
-if __name__ == "__main__":
+def test() -> None:
+	"""
+	Run tests on Queue class
+	"""
 	q = Queue()
 	q.enqueue(10)
 	q.enqueue(20)
 	q.enqueue(30)
 	q.enqueue(20)
 	q.enqueue(100)
+	front = q.dequeue()
 
+	assert len(q) == 4
+	assert front == 10
 
-	print(q)
-	print(len(q))
-	print([i for i in q.get_item()])
+	front = q.dequeue()
+	assert len(q) == 3
+	assert front == 20
+	assert q.is_empty() == False
+	assert q.front() == 30
+
+	iterable = [i for i in q.get_item(pop = False)]
+	assert len(q) == 3
+	assert iterable == [30, 20, 100]
+	assert q.is_empty() == False
+
+	iterable = [i for i in q.get_item(pop = True)]
 	assert len(q) == 0
+	assert iterable == [30, 20, 100]
+	assert q.is_empty() == True
+	print("Works Fine!")
+
+if __name__ == "__main__":
+	test()
+	
+
+
+	
 
 
 

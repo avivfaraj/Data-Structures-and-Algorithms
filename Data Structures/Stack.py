@@ -103,22 +103,43 @@ class Stack():
 		return self.size
 
 
-
-
-if __name__ == "__main__":
+def test() -> None:
+	"""
+	Run tests on Queue class
+	"""
 	st = Stack()
 	st.push(10)
 	st.push(20)
-	st.push(35)
-	print(st)
-	print(st.top())
-	print(st.pop())
-	print(st.top())
+	st.push(30)
+
+	assert st.top() == 30
+	assert len(st) == 3
+	assert st.is_empty() == False
+
 	st.pop()
-	print(st.top())
-	print(len(st))
-	print([i for i in st.get_item(pop = False)])
+	assert st.top() == 20
+	assert st.is_empty() == False
+
+
+	st.pop()
 	assert len(st) == 1
+
+
+	st.push(101)
+	st.push(250)
+	iter_wo_pop = [i for i in st.get_item(pop = False)]
+	assert len(st) == 3
+	assert iter_wo_pop == [250, 101, 10]
+
+	iter_with_pop = [i for i in st.get_item(pop = True)]
+	assert len(st) == 0
+	assert iter_with_pop == [250, 101, 10]
+	assert st.is_empty() == True
+
+	print("Works Fine!")
+
+if __name__ == "__main__":
+	test()
 
 
 
