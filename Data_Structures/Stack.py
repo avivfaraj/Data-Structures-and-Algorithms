@@ -6,6 +6,27 @@ class Stack():
 		self.head = None
 		self.size = 0
 
+	## Setters and Getters
+
+	@property
+	def head(self):
+		return self._head
+	
+	@head.setter
+	def head(self, h):
+		self._head = h
+
+	@property
+	def size(self):
+		return self._size
+	
+	@size.setter
+	def size(self, s):
+		self._size = s
+
+
+	## Stack Methods
+
 	def is_empty(self) -> bool:
 		"""
 		Function to check if there are elements in the Stack

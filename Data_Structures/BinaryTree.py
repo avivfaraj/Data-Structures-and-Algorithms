@@ -6,6 +6,17 @@ class BinaryTree():
 	def __init__(self):
 		self.root = None
 
+	## Getters and Setters
+
+	@property
+	def root(self):
+		return self._root
+	
+	@root.setter
+	def root(self, r):
+		self._root = r
+
+	## BST Methods
 	def is_empty(self) -> bool:
 		"""
 		Function to check if there are elements in Deque

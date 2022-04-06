@@ -8,6 +8,35 @@ class Deque():
 		self.tail = None
 		self.size = 0
 
+	## Getters and Setters
+
+	@property
+	def head(self):
+		return self._head
+	
+	@head.setter
+	def head(self, h):
+		self._head = h
+
+	@property
+	def tail(self):
+		return self._tail
+	
+	@tail.setter
+	def tail(self, t):
+		self._tail = t
+
+	@property
+	def size(self):
+		return self._size
+	
+	@size.setter
+	def size(self, s):
+		self._size = s
+
+
+	## Deque Methods
+
 	def is_empty(self) -> bool:
 		"""
 		Function to check if there are elements in Deque
