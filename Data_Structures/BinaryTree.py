@@ -1,6 +1,5 @@
 from Node import BTNode
 
-
 class BinaryTree():
 
 	def __init__(self):
@@ -39,57 +38,50 @@ class BinaryTree():
 		"""
 		return self.root.value
 
-	def height(self) -> int:
-		return self.tree_height(self.root)
+	def height(self, current_node = None, initial = True) -> int:
 
-	def tree_height(self, current_node: "BTNode") -> int:
+		if initial:
+			current_node = self.root
 
 		if current_node == None:
 			return 0
 
-		left_height = self.tree_height(current_node.left)
-		right_height = self.tree_height(current_node.right)
+		left_height = self.height(current_node.left, False)
+		right_height = self.height(current_node.right, False)
 
 		if right_height > left_height:
 			return right_height + 1
 
 		return left_height + 1
 
-	def find(self, value) -> int:
+
+	def find(self, value, current_node = None, initial = True) -> int:
 		"""
 		Front of the Deque
 
 		Return:
 		Value of the front node in the Deque (int)
 		"""
-		return self.find_recursive(value, self.root)
+		if initial:
+			current_node = self.root
 
-	def find_recursive(self, value: int, current_node: "BTNode") -> int:
-		"""
-		Back of the Deque
-
-		Return:
-		Value of the last node in the Deque (int)
-		"""
-
-		if current_node == None:
+		if not current_node:
 			return False
 
 		if current_node.value == value:
 			return True
 
 		if current_node.value > value:
-			return self.find_recursive(value, current_node.left)
+			return self.find(value, current_node.left, False)
 
-		return self.find_recursive(value, current_node.right)
+		return self.find(value, current_node.right, False)
+
 
 	def insert(self, value: int) -> None:
 
 		"""
 		Push a new node in the front of the Deque
 		"""
-
-		# New node with value, but next,previous -> None
 		self.root = self.insert_recursive(value, self.root)
 
 
@@ -154,6 +146,97 @@ class BinaryTree():
 			print("N", end = " ")
 
 
+	def min(self, current_node: "BTNode" = None, initial = True):
+
+		# Ensure current node points at the root at the initial run
+		if initial:
+			current_node = self.root
+
+		# Tree is empty
+		if not current_node:
+			return None
+
+		# Ensure minimum
+		if not current_node.left:
+
+			# Return min value
+			return current_node.value
+
+		# Lower values will be on the left
+		return self.min(current_node.left, False)
+
+	def max(self, current_node: "BTNode" = None, initial = True):
+
+		# Ensure current node points at the root at the initial run
+		if initial:
+			current_node = self.root
+
+		# Tree is empty
+		if not current_node:
+			return None
+
+		# Ensure Maxmimum
+		if not current_node.right:
+
+			# Return min value
+			return current_node.value
+
+		# Lower values will be on the left
+		return self.max(current_node.right, False)
+
+	def delete(self, 
+			   value: int,  
+			   mors: bool = True):
+		self.root = self.delete_value(value, self.root, mors)
+
+	def delete_value(self, 
+			   value: int, 
+			   current_node: "BTNode" = None, 
+			   mors: bool = True):
+
+		if not current_node:
+			return None
+
+		if current_node.value == value: 
+			return self.delete_node(current_node, mors)
+
+		if current_node.value > value:
+			current_node.left = self.delete_value(value, current_node.left, mors)
+
+		current_node.right = self.delete_value(value, current_node.right, mors)
+		return current_node
+
+
+	def delete_node(self, current_node: "BTNode" = None, mors: bool = True):
+
+		if not current_node.left:
+			return current_node.right
+
+		if not current_node.right:
+			return current_node.left
+
+		if mors:
+			# Minimum of the right side 
+			min_value = self.min(current_node.right, False)
+
+			current_node.value = min_value
+
+			current_node.right = self.delete_value(min_value, current_node.right, mors)
+
+		else:
+			# Maximum of the left side
+			max_value = self.max(current_node.left, False)
+
+			current_node.value = max_value
+
+			current_node.left = self.delete_value(max_value, current_node.left, mors)
+
+		return current_node
+
+
+
+
+
 
 # def test() -> None:
 # 	"""
@@ -207,7 +290,10 @@ class BinaryTree():
 
 # 	print("Works Fine!")
 
+
+
 if __name__ == "__main__":
+
 	test = BinaryTree()
 	test.insert(6)
 	test.insert(4)
@@ -216,6 +302,8 @@ if __name__ == "__main__":
 	test.insert(5)
 	test.insert(8)
 	test.insert(12)
+	print(test.find(5))
+	print(test.min())
 	print(test.get_root())
 	print(test.height())
 	print("Inorder: ", end = "")
@@ -224,3 +312,7 @@ if __name__ == "__main__":
 	test.print(order = "post")
 	print("Preorder: ", end = "")
 	test.print(order = "pre")
+
+	test.delete(6)
+	test.print(order = "pre")
+
