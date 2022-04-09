@@ -191,63 +191,25 @@ def test() -> None:
 	"""
 	Run tests on Queue class
 	"""
-	# de = Deque()
-	# de.push_front(10)
-	# de.push_front(20)
-	# de.push_back(30)
-	# de.push_front(101)
-	# de.push_back(202)
-
-	# assert len(de) == 5
-	# assert de.front() == 101
-	# assert de.back() == 202
-
-	# back = de.pop_back()
-	# assert back == 202
-	# assert len(de) == 4
-
-	# front = de.pop_front()
-	# assert front == 101
-	# assert len(de) == 3
-
-	# # Iterable - Forward without pop
-	# iter_wo_pop = [i for i in de.get_item(forward = True,pop = False)]
-	# assert len(de) == 3
-	# assert iter_wo_pop == [20, 10, 30]
-	# assert de.is_empty() == False
-
-	# # Iterable - Reverse without pop
-	# iter_wo_pop = [i for i in de.get_item(forward = False,pop = False)]
-	# assert len(de) == 3
-	# assert iter_wo_pop == [30, 10, 20]
-	# assert de.is_empty() == False
-
-	# # Iterable - Forward with pop
-	# iter_wo_pop = [i for i in de.get_item(forward = True,pop = True)]
-	# assert len(de) == 0
-	# assert iter_wo_pop == [20, 10, 30]
-	# assert de.is_empty() == True
-
-	# # Iterable - Reverse with pop
-	# de.push_front(30)
-	# de.push_front(10)
-	# de.push_front(40)
-	# iter_wo_pop = [i for i in de.get_item(forward = False,pop = True)]
-	# assert len(de) == 0
-	# assert iter_wo_pop == [30, 10, 40]
-	# assert de.is_empty() == True
-
-	# print("Works Fine!")
-
-if __name__ == "__main__":
-	# 
 	lls = LinkedList()
+
+	assert lls.is_empty() == True
 	lls.insert(10)
 	lls.insert(20)
 	lls.insert(30)
-	# print(lls.delete(20))
-	# lls.display()
-	# print(lls.search(10))
-	for i in lls.iter_items():
-		print(i)
+	assert lls.delete(20) == True
+
+	i = lls.iter_items()
+	assert next(i) == 30
+	assert next(i) == 10
+	lls.display()
+
+	assert lls.search(10) == True
+	assert lls.search(20) == False
+	assert lls.is_empty() == False
+	
+	print("Works Fine!")
+
+if __name__ == "__main__":
+	test()
 
