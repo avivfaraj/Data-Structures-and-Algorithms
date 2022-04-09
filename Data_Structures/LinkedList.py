@@ -82,9 +82,6 @@ class LinkedList():
 		return False
 
 
-
-
-
 	def display(self, current_node = None, initial = True) -> None:
 
 		"""
@@ -165,17 +162,17 @@ class LinkedList():
 		Return:
 		String representation of Deque
 		"""
-		if self.front() == None:
-			return "Queue is Empty!"
+		if self.head == None:
+			return "List is Empty!"
 
-		output = "Front -> "
+		output = "Head -> "
 		helper_node = self.head
 
 		while helper_node != None:
-			output += str(helper_node.value) + " <-> "
+			output += str(helper_node.value) + " -> "
 			helper_node = helper_node.next
 
-		return output[:-2] + " Tail"
+		return output[:-4]
 
 
 	def __len__(self) -> int:
@@ -208,6 +205,7 @@ def test() -> None:
 	assert lls.search(20) == False
 	assert lls.is_empty() == False
 	
+	print(lls)
 	print("Works Fine!")
 
 if __name__ == "__main__":
