@@ -65,7 +65,7 @@ class DoublyLinkedList():
 
 		self.size += 1
 
-	def delete(self, value: int = None, front = False) -> bool:
+	def delete(self, value: int = None, front: bool = False) -> bool:
 		"""
 		Delete an item from the list
 
@@ -106,7 +106,10 @@ class DoublyLinkedList():
 		return False
 
 
-	def display(self, current_node = None, initial = True, forward = True) -> None:
+	def display(self, 
+				current_node: DoubleNode = None, 
+				initial: bool = True,
+				forward: bool = True) -> None:
 
 		"""
 		 Recursive function that prints the items in the linked list.
@@ -131,16 +134,15 @@ class DoublyLinkedList():
 				self.display(current_node.previous, False, False)
 
 
-	def search_rec(self, value: int, current_node = None, previous_node = None) -> DoubleNode:
+	def search_rec(self,
+				   value: int, 
+				   current_node: DoubleNode = None) -> DoubleNode:
 
 		"""
 		Search an element in the linked list
 
 		Return:
-		Tuple(Current Node, Previous Node). 
-
-		NOTE: The method returns tuple because it is being utilized 
-		in delete method where the previous node is required.
+		Double Node if node was found, None otherwise. 
 		"""
 
 		# Ensure end of list
@@ -153,7 +155,7 @@ class DoublyLinkedList():
 			return current_node
 		
 		# Recursive call 
-		return self.search_rec(value, current_node.next, current_node)
+		return self.search_rec(value, current_node.next)
 
 	def search(self, value: int) -> bool:
 		"""
@@ -172,7 +174,7 @@ class DoublyLinkedList():
 	def print_last(self):
 		print(self.last.value) 
 
-	def iter_items(self, forward = True) -> int:
+	def iter_items(self, forward: bool = True) -> int:
 		"""
 		Generator function to iterate over nodes in Deque
 
@@ -261,7 +263,7 @@ def test() -> None:
 	assert doubly_ls.search(20) == True
 	assert doubly_ls.is_empty() == False
 	
-	# print(lls)
+	print(doubly_ls)
 	print("Works Fine!")
 
 if __name__ == "__main__":

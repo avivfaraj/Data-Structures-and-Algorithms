@@ -29,7 +29,7 @@ class BinaryTree():
 		return False
 
 
-	def get_root(self) -> "BTNode":
+	def get_root(self) -> BTNode:
 		"""
 		Function to check if there are elements in Deque
 
@@ -38,7 +38,9 @@ class BinaryTree():
 		"""
 		return self.root.value
 
-	def height(self, current_node = None, initial = True) -> int:
+	def height(self, 
+			   current_node: BTNode = None,
+			   initial: bool = True) -> int:
 
 		if initial:
 			current_node = self.root
@@ -55,7 +57,10 @@ class BinaryTree():
 		return left_height + 1
 
 
-	def find(self, value, current_node = None, initial = True) -> int:
+	def find(self, 
+			 value: int, 
+			 current_node: BTNode = None, 
+			 initial: bool = True) -> int:
 		"""
 		Front of the Deque
 
@@ -85,7 +90,9 @@ class BinaryTree():
 		self.root = self.insert_recursive(value, self.root)
 
 
-	def insert_recursive(self, value: int, current_node: "BTNode") -> None:
+	def insert_recursive(self, 
+						 value: int, 
+						 current_node: BTNode) -> None:
 		"""
 		Push a new node to the end of the Deque
 		"""
@@ -119,7 +126,7 @@ class BinaryTree():
 
 
 
-	def preorder_rec(self, current_node : "BTNode") -> None:
+	def preorder_rec(self, current_node : BTNode) -> None:
 		if current_node:
 			print(current_node.value, end = " ")
 			self.preorder_rec(current_node.left)
@@ -129,7 +136,7 @@ class BinaryTree():
 
 
 
-	def postorder_rec(self, current_node : "BTNode") -> None:
+	def postorder_rec(self, current_node : BTNode) -> None:
 		if current_node:
 			self.postorder_rec(current_node.left)
 			self.postorder_rec(current_node.right)
@@ -137,7 +144,7 @@ class BinaryTree():
 		else:
 			print("N", end = " ")
 
-	def inorder_rec(self, current_node : "BTNode") -> None:
+	def inorder_rec(self, current_node : BTNode) -> None:
 		if current_node:
 			self.inorder_rec(current_node.left)
 			print(current_node.value, end = " ")
@@ -146,7 +153,9 @@ class BinaryTree():
 			print("N", end = " ")
 
 
-	def min(self, current_node: "BTNode" = None, initial = True):
+	def min(self, 
+			current_node: BTNode = None, 
+			initial: bool = True):
 
 		# Ensure current node points at the root at the initial run
 		if initial:
@@ -165,7 +174,9 @@ class BinaryTree():
 		# Lower values will be on the left
 		return self.min(current_node.left, False)
 
-	def max(self, current_node: "BTNode" = None, initial = True):
+	def max(self, 
+			current_node: BTNode = None, 
+			initial: bool = True):
 
 		# Ensure current node points at the root at the initial run
 		if initial:
@@ -187,11 +198,12 @@ class BinaryTree():
 	def delete(self, 
 			   value: int,  
 			   mors: bool = True):
+
 		self.root = self.delete_value(value, self.root, mors)
 
 	def delete_value(self, 
 			   value: int, 
-			   current_node: "BTNode" = None, 
+			   current_node: BTNode = None, 
 			   mors: bool = True):
 
 		if not current_node:
@@ -207,7 +219,9 @@ class BinaryTree():
 		return current_node
 
 
-	def delete_node(self, current_node: "BTNode" = None, mors: bool = True):
+	def delete_node(self, 
+					current_node: BTNode = None,
+					 mors: bool = True):
 
 		if not current_node.left:
 			return current_node.right

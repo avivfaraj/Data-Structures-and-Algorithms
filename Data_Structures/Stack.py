@@ -77,7 +77,7 @@ class Stack():
 
 		return val
 
-	def get_item(self, pop = True) -> int:
+	def get_item(self, pop: bool = True) -> int:
 		"""
 		Generator function to iterate over nodes in Stack
 

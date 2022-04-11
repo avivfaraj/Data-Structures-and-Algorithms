@@ -52,7 +52,9 @@ class LinkedList():
 		else:
 			self.head = new_node
 
-	def delete(self, value: int = None, front = False) -> bool:
+	def delete(self, 
+			   value: int = None, 
+			   front: bool = False) -> bool:
 		"""
 		Delete an item from the list
 
@@ -82,7 +84,9 @@ class LinkedList():
 		return False
 
 
-	def display(self, current_node = None, initial = True) -> None:
+	def display(self, 
+				current_node: Node = None, 
+				initial: bool = True) -> None:
 
 		"""
 		 Recursive function that prints the items in the linked list.
@@ -99,7 +103,10 @@ class LinkedList():
 				print(str(current_node.value), end = "\n")
 			self.display(current_node.next, False)
 
-	def search_rec(self, value: int, current_node = None, previous_node = None) -> Tuple[Node,Node]:
+	def search_rec(self, 
+				   value: int, 
+				   current_node: Node = None, 
+				   previous_node: Node = None) -> Tuple[Node,Node]:
 
 		"""
 		Search an element in the linked list
