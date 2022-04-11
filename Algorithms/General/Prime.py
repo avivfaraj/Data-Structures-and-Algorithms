@@ -6,6 +6,7 @@ class Prime():
 		self.rand = self.find_prime(n)
 		self._prev = []
 
+	# Setters and Getters
 	@property
 	def rand(self):
 		return self._rand
@@ -25,9 +26,20 @@ class Prime():
 		else:
 			self._prev = []
 
+	# Prime Methods
+	def find_prime(self, n: int = 100) -> int:
+		"""
+		Recusrive function that find a prime number from 2 to n
 
-	def find_prime(self, n: int = 100):
-		
+		Input:
+		------
+		n -> Maximum number. Define a range between 2 and n.
+
+		Return:
+		------
+		A prime number in the range 2 and n. 
+		"""
+
 		# Odd numbers
 		rand_num = random.randrange(1, n, 2)
 
@@ -39,26 +51,61 @@ class Prime():
 			return self.find_prime(n)
 		return rand_num
 
-	def new_rand(self, n: int = 10, counter: int = 0, add = True):
+	def new_rand(self, n: int = 10, counter: int = 0):
+		"""
+		Get a new random prime number from find_prime method
+		and check wether the number was generated before.
+		If wasn't, it updates both attributes.
+
+		Input:
+		------
+		n 		-> Maximum number. Define a range between 2 and n.
+		counter -> count iteration of recursive function in order 
+				   to terminate after 500 iterations. 
+
+		Return:
+		------
+		A prime number in the range 2 and n. 
+		"""
+
 		random_num = self.find_prime(n)
 
 		# Abort recursion after 500 iterations
 		if counter == 500:
 			raise ValueError("Couldn't find a new prime number in that range!")
 
-		if add:
-			if random_num in self.prev or random_num == self.rand:
-				print(random_num)
-				counter += 1
-				return self.new_rand(n, counter)
+		if random_num in self.prev or random_num == self.rand:
+			print(random_num)
+			counter += 1
+			return self.new_rand(n, counter)
 
 		return random_num
 
 	def new_prime(self, n: int = 10):
+		"""
+		Update the current prime number to a new one. 
+
+		Input:
+		------
+		n -> Maximum number. Define a range between 2 and n.
+
+		Output:
+		------
+		Print an error message if a new prime number was not found.
+		"""
+
 		try:
+
+			# Find new prime
 			new_num = self.new_rand(n)
+
+		# Too many iterations
 		except ValueError as err:
+
+			# Couldn't find a new prime
 			print(err)
+
+		# Update attributes 
 		else:
 			self.prev = self.rand
 			self.rand = new_num
@@ -128,9 +175,10 @@ def test():
 
 	# Find a randon prime number without 
 	# modifying the instance's attributes (rand, prev)
-	print(test.new_rand(n = 10000,add = False))
+	print(test.new_rand(n = 10000))
 	print(test.rand, test.prev)
 	print(test)
+	print(test.find_prime(n = 10000))
 
 
 if __name__ == "__main__":
