@@ -113,9 +113,18 @@ def karp_rabin_randomized(text: str, pattern: str, output: bool = False) -> int:
 def test():
     text = "This is just an example"
     pattern = "jua"
-    print(karp_rabin_randomized(text, pattern, True))
+    assert karp_rabin_randomized(text, pattern) == -1
+
+    pattern = "just"
+    assert karp_rabin_randomized(text, pattern) == 8
+
+    pattern = "his "
+    assert karp_rabin_randomized(text, pattern) == 1
+
+    pattern = "exa"
+    assert karp_rabin_randomized(text, pattern) == 16
+
+    print("Works fine!")
 
 if __name__ == "__main__":
     test()
-    help(karp_rabin_randomized)
-
