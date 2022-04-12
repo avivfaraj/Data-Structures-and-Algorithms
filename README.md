@@ -20,6 +20,15 @@ Important data structures and algorithms that are being used in computer science
 
 ### Algorithms:
 
+#### General
+
+[Rolling Hash](https://github.com/avivfaraj/Data-Structures-and-Algorithms/tree/main/Algorithms/General/Rolling_Hash.py)
+
+[Karp-Rabin](https://github.com/avivfaraj/Data-Structures-and-Algorithms/tree/main/Algorithms/General/Karp-Rabin.py)
+
+[Prime Numbers](https://github.com/avivfaraj/Data-Structures-and-Algorithms/tree/main/Algorithms/General/Prime.py)
+
+
 #### Sorting
 
 [Bubble Sort](https://github.com/avivfaraj/Data-Structures-and-Algorithms/tree/main/Algorithms/Sorting/BubbleSort.py)
