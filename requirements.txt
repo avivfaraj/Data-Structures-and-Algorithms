@@ -1,4 +1,10 @@
 matplotlib==3.5.1
 networkx==2.8.1
-graphviz==0.20
-pygraphviz==1.7
+
+# Packages required for drawing BST Graph
+# Those packages are in a comment because
+# they make the build to fail while installing them
+# So, in order to draw BST, one make sure to install
+# those packages, or else importing error will raise.
+# graphviz==0.20
+# pygraphviz==1.7
