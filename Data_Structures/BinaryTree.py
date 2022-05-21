@@ -1,4 +1,6 @@
 from Node import BTNode
+import matplotlib.pyplot as plt
+import networkx as nx
 
 
 class BinaryTree():
@@ -244,8 +246,46 @@ class BinaryTree():
 
         return current_node
 
+    def draw_bst(self):
 
-if __name__ == "__main__":
+        # Initialize Directed Graph
+        G = nx.DiGraph()
+
+        # Recursively add nodes and edges
+        # Starting from root
+        self.draw_recursive(G, self.root, None)
+
+        # Define Hierarchical graph ("dot")
+        # NOTE: This line requires pygraphviz installed!
+        pos = nx.nx_agraph.graphviz_layout(G, prog="dot")
+
+        # Draw nodes, labels and edges
+        nx.draw_networkx_nodes(G, pos=pos)
+        nx.draw_networkx_labels(G, pos=pos)
+        nx.draw_networkx_edges(G, pos=pos, edgelist=G.edges(data=True))
+
+        # Show tree
+        plt.title("Binary Search Tree Graph")
+        plt.show()
+
+    def draw_recursive(self,
+                       graph,
+                       current_node: BTNode,
+                       prev_node: BTNode):
+
+        if current_node:
+            graph.add_node(current_node.value)
+
+            if prev_node:
+
+                graph.add_edge(prev_node.value,
+                               current_node.value)
+
+            self.draw_recursive(graph, current_node.left, current_node)
+            self.draw_recursive(graph, current_node.right, current_node)
+
+
+def test():
     test = BinaryTree()
     test.insert(6)
     test.insert(4)
@@ -254,6 +294,8 @@ if __name__ == "__main__":
     test.insert(5)
     test.insert(8)
     test.insert(12)
+    test.insert(9)
+    test.insert(7)
     print(test.find(5))
     print(test.min())
     print(test.get_root())
@@ -266,3 +308,8 @@ if __name__ == "__main__":
     test.print(order="pre")
     test.delete(6)
     test.print(order="pre")
+    test.draw_bst()
+
+
+if __name__ == "__main__":
+    test()
