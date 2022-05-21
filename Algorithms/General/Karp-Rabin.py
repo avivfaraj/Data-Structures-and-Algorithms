@@ -2,14 +2,14 @@ from Rolling_Hash import rol_hash
 from Prime import Prime
 
 
-
-
-def karp_rabin_randomized(text: str, pattern: str, output: bool = False) -> int:
+def karp_rabin_randomized(text: str,
+                          pattern: str,
+                          output: bool = False) -> int:
     """
     Karp-Rabin is a string matching algorithm that utilizes hash values
     using a random prime number for faster implementation.
     If a False match occurs, the prime number is changed to another
-    random prime number, and rolling hash starts again. 
+    random prime number, and rolling hash starts again.
 
     Input:
     ------
@@ -19,8 +19,8 @@ def karp_rabin_randomized(text: str, pattern: str, output: bool = False) -> int:
 
     Output:
     ------
-    If output is True, it prints every iteration 
-    
+    If output is True, it prints every iteration
+
     Return:
     ------
     The starting index of the first occurrence of pattern in text.
@@ -44,9 +44,9 @@ def karp_rabin_randomized(text: str, pattern: str, output: bool = False) -> int:
 
     # Print pattern and its hash value
     if output:
-        print("Pattern: " + pattern +", Hash: "+ str(pattern_hash))
+        print("Pattern: " + pattern + ", Hash: " + str(pattern_hash))
 
-    # Iterate over windows (substrings) with length similar to pattern 
+    # Iterate over windows (substrings) with length similar to pattern
     while not match and i < m - n:
 
         # Ensure first time using this prime number
@@ -66,29 +66,39 @@ def karp_rabin_randomized(text: str, pattern: str, output: bool = False) -> int:
 
                 # Print pattern and its new hash value
                 if output:
-                    print("Pattern: " + pattern +", New Hash: "+ str(pattern_hash))
+                    print("Pattern: " +
+                          pattern +
+                          ", New Hash: " +
+                          str(pattern_hash))
 
             # Hash window (substring of text) with the new prime number
-            window_hash = rol_hash(text[i:i+n], prime)
+            window_hash = rol_hash(text[i: i + n], prime)
 
-            # Set to False --> to use rolling hash next iterations (Faster computation)
+            # Set to False --> to use rolling hash
+            # next iterations (Faster computation)
             new_prime = False
 
         # Same prime --> Rolling hash
         else:
-            window_hash = rol_hash(text[i:i+n],prime, text[i-1],window_hash)
+            window_hash = rol_hash(text[i: i + n],
+                                   prime,
+                                   text[i-1],
+                                   window_hash)
 
-        # Print window and its hash value 
+        # Print window and its hash value
         if output:
-            print("Widow: \'" + text[i:i+n] +"\', Hash: "+ str(window_hash))
-        
+            print("Widow: \'" +
+                  text[i: i + n] +
+                  "\', Hash: " +
+                  str(window_hash))
+
         # Ensure hash values are the same
         if window_hash == pattern_hash:
 
             # Ensure the pattern and the window are the same string!
             # There is a chance that the hash value will be the same
             # But the string themselves are different. Hence, it is
-            # required to check if the string do actually match. 
+            # required to check if the string do actually match.
             if pattern == text[i:i+n]:
 
                 # Stop iteration
@@ -103,11 +113,10 @@ def karp_rabin_randomized(text: str, pattern: str, output: bool = False) -> int:
                 # It adds randomization since it prevents
                 # the same exact error from occuring again.
                 new_prime = True
-                
+
         i += 1
 
     return start_index
-
 
 
 def test():
@@ -125,6 +134,7 @@ def test():
     assert karp_rabin_randomized(text, pattern) == 16
 
     print("Works fine!")
+
 
 if __name__ == "__main__":
     test()
