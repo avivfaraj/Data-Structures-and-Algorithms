@@ -5,9 +5,9 @@ name: DSA
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, flak8 ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, flak8 ]
 
 permissions:
   contents: read
