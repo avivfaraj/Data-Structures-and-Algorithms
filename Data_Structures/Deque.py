@@ -3,275 +3,269 @@ from Node import DoubleNode
 
 class Deque():
 
-	def __init__(self):
-		self.head = None
-		self.tail = None
-		self.size = 0
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
 
-	## Getters and Setters
+    # Getters and Setters
+    @property
+    def head(self):
+        return self._head
 
-	@property
-	def head(self):
-		return self._head
-	
-	@head.setter
-	def head(self, h):
-		self._head = h
+    @head.setter
+    def head(self, h):
+        self._head = h
 
-	@property
-	def tail(self):
-		return self._tail
-	
-	@tail.setter
-	def tail(self, t):
-		self._tail = t
+    @property
+    def tail(self):
+        return self._tail
 
-	@property
-	def size(self):
-		return self._size
-	
-	@size.setter
-	def size(self, s):
-		self._size = s
+    @tail.setter
+    def tail(self, t):
+        self._tail = t
 
+    @property
+    def size(self):
+        return self._size
 
-	## Deque Methods
+    @size.setter
+    def size(self, s):
+        self._size = s
 
-	def is_empty(self) -> bool:
-		"""
-		Function to check if there are elements in Deque
+    # Deque Methods
+    def is_empty(self) -> bool:
+        """
+        Function to check if there are elements in Deque
 
-		Return:
-		True if empty, False otherwise.
-		"""
-		if self.head == None:
-			return True
+        Return:
+        True if empty, False otherwise.
+        """
+        if self.head is None:
+            return True
 
-		return False
+        return False
 
-	def front(self) -> int:
-		"""
-		Front of the Deque
+    def front(self) -> int:
+        """
+        Front of the Deque
 
-		Return:
-		Value of the front node in the Deque (int)
-		"""
-		if self.head == None:
-			return None
+        Return:
+        Value of the front node in the Deque (int)
+        """
+        if self.head is None:
+            return None
 
-		return self.head.value
+        return self.head.value
 
-	def back(self) -> int:
-		"""
-		Back of the Deque
+    def back(self) -> int:
+        """
+        Back of the Deque
 
-		Return:
-		Value of the last node in the Deque (int)
-		"""
-		if self.tail == None:
-			return None
+        Return:
+        Value of the last node in the Deque (int)
+        """
+        if self.tail is None:
+            return None
 
-		return self.tail.value
+        return self.tail.value
 
-	def push_front(self, value: int) -> None:
+    def push_front(self, value: int) -> None:
 
-		"""
-		Push a new node in the front of the Deque
-		"""
+        """
+        Push a new node in the front of the Deque
+        """
 
-		# New node with value, but next,previous -> None
-		newNode = DoubleNode(value)
+        # New node with value, but next,previous -> None
+        newNode = DoubleNode(value)
 
-		if self.head == None:
-			self.head = newNode
-			self.tail = newNode
-		else:
-			self.head.previous = newNode
-			newNode.next = self.head
-			self.head = newNode
+        if self.head is None:
+            self.head = newNode
+            self.tail = newNode
+        else:
+            self.head.previous = newNode
+            newNode.next = self.head
+            self.head = newNode
 
-		self.size += 1
+        self.size += 1
 
-	def push_back(self, value: int) -> None:
+    def push_back(self, value: int) -> None:
 
-		"""
-		Push a new node to the end of the Deque
-		"""
-		# New node with value, but next,previous -> None
-		newNode = DoubleNode(value)
+        """
+        Push a new node to the end of the Deque
+        """
+        # New node with value, but next,previous -> None
+        newNode = DoubleNode(value)
 
-		if self.tail == None:
-			self.head = newNode
-			self.tail = newNode
-		else:
-			self.tail.next = newNode
-			newNode.previous = self.tail
-			self.tail = newNode
+        if self.tail is None:
+            self.head = newNode
+            self.tail = newNode
+        else:
+            self.tail.next = newNode
+            newNode.previous = self.tail
+            self.tail = newNode
 
-		self.size += 1
+        self.size += 1
 
-	def pop_front(self) -> int:
-		"""
-		Remove the node in the front of the Deque
+    def pop_front(self) -> int:
+        """
+        Remove the node in the front of the Deque
 
-		Return:
-		Value of the item in front (int), None if empty.
-		"""
-		if self.head == None:
-			return
+        Return:
+        Value of the item in front (int), None if empty.
+        """
+        if self.head is None:
+            return
 
-		val = self.head.value
+        val = self.head.value
 
-		if self.head == self.tail:
-			self.head, self.tail = None, None
-			self.size = 0
-			return val
+        if self.head == self.tail:
+            self.head, self.tail = None, None
+            self.size = 0
+            return val
 
-		self.head = self.head.next
+        self.head = self.head.next
 
-		if self.head != None:
-			self.head.previous = None
+        if self.head is not None:
+            self.head.previous = None
 
-		self.size -= 1
+        self.size -= 1
 
-		return val
+        return val
 
-	def pop_back(self) -> int:
-		"""
-		Remove the node in the end of the Deque
+    def pop_back(self) -> int:
+        """
+        Remove the node in the end of the Deque
 
-		Return:
-		Value of the item in end (int), None if empty.
-		"""
-		if self.tail == None:
-			return
+        Return:
+        Value of the item in end (int), None if empty.
+        """
+        if self.tail is None:
+            return
 
-		val = self.tail.value
+        val = self.tail.value
 
-		if self.head == self.tail:
-			self.head, self.tail = None, None
-			self.size = 0
-			return val
+        if self.head == self.tail:
+            self.head, self.tail = None, None
+            self.size = 0
+            return val
 
-		self.tail = self.tail.previous
+        self.tail = self.tail.previous
 
-		if self.tail != None:
-			self.tail.next = None
+        if self.tail is not None:
+            self.tail.next = None
 
-		self.size -= 1
+        self.size -= 1
 
-		return val
+        return val
 
-	def get_item(self, forward: bool = True, pop: bool = True) -> int:
-		"""
-		Generator function to iterate over nodes in Deque
+    def get_item(self, forward: bool = True, pop: bool = True) -> int:
+        """
+        Generator function to iterate over nodes in Deque
 
-		Input:
-		forward -> True to start at the Front and move toward the end,
-				   False to start at the End and move backward to the front
+        Input:
+        forward -> True to start at the Front and move toward the end,
+                   False to start at the End and move backward to the front
 
-		pop     -> Remove nodes from Deque while iterating if True. 
-		Return:
-		Yield value of current node (int).
-		"""
+        pop     -> Remove nodes from Deque while iterating if True.
+        Return:
+        Yield value of current node (int).
+        """
+        helper_node = self.head if forward else self.tail
 
-		helper_node = self.head if forward else self.tail
+        while helper_node is not None:
+            val = helper_node.value
+            helper_node = (helper_node.next
+                           if forward
+                           else helper_node.previous
+                           )
+            if pop:
+                if forward:
+                    self.pop_front()
+                else:
+                    self.pop_back()
 
-		while helper_node != None:
-			val = helper_node.value
-			helper_node = (helper_node.next
-						   if forward
-						   else helper_node.previous
-							)
-			if pop:
-				if forward:
-					self.pop_front()
-				else:
-					self.pop_back()
+            yield val
 
-			yield val
+    def __repr__(self) -> None:
+        """
+        Represent the Deque in a string
 
+        Return:
+        String representation of Deque
+        """
+        if self.front() is None:
+            return "Queue is Empty!"
 
-	def __repr__(self) -> None:
-		"""
-		Represent the Deque in a string
+        output = "Front -> "
+        helper_node = self.head
 
-		Return:
-		String representation of Deque
-		"""
-		if self.front() == None:
-			return "Queue is Empty!"
+        while helper_node is not None:
+            output += str(helper_node.value) + " <-> "
+            helper_node = helper_node.next
 
-		output = "Front -> "
-		helper_node = self.head
+        return output[:-2] + " Tail"
 
-		while helper_node != None:
-			output += str(helper_node.value) + " <-> "
-			helper_node = helper_node.next
-
-		return output[:-2] + " Tail"
-
-
-	def __len__(self) -> int:
-		"""
-		Return:
-		Length of the Deque (int)
-		"""
-		return self.size
-
+    def __len__(self) -> int:
+        """
+        Return:
+        Length of the Deque (int)
+        """
+        return self.size
 
 
 def test() -> None:
-	"""
-	Run tests on Queue class
-	"""
-	de = Deque()
-	de.push_front(10)
-	de.push_front(20)
-	de.push_back(30)
-	de.push_front(101)
-	de.push_back(202)
+    """
+    Run tests on Queue class
+    """
+    de = Deque()
+    de.push_front(10)
+    de.push_front(20)
+    de.push_back(30)
+    de.push_front(101)
+    de.push_back(202)
 
-	assert len(de) == 5
-	assert de.front() == 101
-	assert de.back() == 202
+    assert len(de) == 5
+    assert de.front() == 101
+    assert de.back() == 202
 
-	back = de.pop_back()
-	assert back == 202
-	assert len(de) == 4
+    back = de.pop_back()
+    assert back == 202
+    assert len(de) == 4
 
-	front = de.pop_front()
-	assert front == 101
-	assert len(de) == 3
+    front = de.pop_front()
+    assert front == 101
+    assert len(de) == 3
 
-	# Iterable - Forward without pop
-	iter_wo_pop = [i for i in de.get_item(forward = True,pop = False)]
-	assert len(de) == 3
-	assert iter_wo_pop == [20, 10, 30]
-	assert de.is_empty() == False
+    # Iterable - Forward without pop
+    iter_wo_pop = [i for i in de.get_item(forward=True, pop=False)]
+    assert len(de) == 3
+    assert iter_wo_pop == [20, 10, 30]
+    assert de.is_empty() is False
 
-	# Iterable - Reverse without pop
-	iter_wo_pop = [i for i in de.get_item(forward = False,pop = False)]
-	assert len(de) == 3
-	assert iter_wo_pop == [30, 10, 20]
-	assert de.is_empty() == False
+    # Iterable - Reverse without pop
+    iter_wo_pop = [i for i in de.get_item(forward=False, pop=False)]
+    assert len(de) == 3
+    assert iter_wo_pop == [30, 10, 20]
+    assert de.is_empty() is False
 
-	# Iterable - Forward with pop
-	iter_wo_pop = [i for i in de.get_item(forward = True,pop = True)]
-	assert len(de) == 0
-	assert iter_wo_pop == [20, 10, 30]
-	assert de.is_empty() == True
+    # Iterable - Forward with pop
+    iter_wo_pop = [i for i in de.get_item(forward=True, pop=True)]
+    assert len(de) == 0
+    assert iter_wo_pop == [20, 10, 30]
+    assert de.is_empty() is True
 
-	# Iterable - Reverse with pop
-	de.push_front(30)
-	de.push_front(10)
-	de.push_front(40)
-	iter_wo_pop = [i for i in de.get_item(forward = False,pop = True)]
-	assert len(de) == 0
-	assert iter_wo_pop == [30, 10, 40]
-	assert de.is_empty() == True
+    # Iterable - Reverse with pop
+    de.push_front(30)
+    de.push_front(10)
+    de.push_front(40)
+    iter_wo_pop = [i for i in de.get_item(forward=False, pop=True)]
+    assert len(de) == 0
+    assert iter_wo_pop == [30, 10, 40]
+    assert de.is_empty() is True
 
-	print("Works Fine!")
+    print("Works Fine!")
+
 
 if __name__ == "__main__":
-	test()
+    test()
