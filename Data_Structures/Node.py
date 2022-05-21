@@ -64,8 +64,8 @@ class BTNode():
     Similar to DoubleNode with renamed attributes:
     next, previous ----> left, right.
     """
-    def __init__(self, val=None, left=None, right=None):
-        self.value = val
+    def __init__(self, v=None, left=None, right=None):
+        self.value = v
         self.left = left
         self.right = right
 
