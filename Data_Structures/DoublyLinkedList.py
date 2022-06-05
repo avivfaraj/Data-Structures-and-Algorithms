@@ -1,4 +1,5 @@
 from Node import DoubleNode
+from typing import Generator, Optional
 
 
 class DoublyLinkedList():
@@ -77,21 +78,22 @@ class DoublyLinkedList():
             except TypeError:
                 return False
 
-            if node.previous:
-                temp_node = node.previous
-                temp_node.next = node.next
+            if node:
+                if node.previous:
+                    temp_node = node.previous
+                    temp_node.next = node.next
 
-                temp_node = node.next
-                if temp_node:
-                    temp_node.previous = node.previous
+                    temp_node = node.next
+                    if temp_node:
+                        temp_node.previous = node.previous
+                    else:
+                        self.last = node.previous
+
+                    del node
+                    self.size -= 1
+                    return True
                 else:
-                    self.last = node.previous
-
-                del node
-                self.size -= 1
-                return True
-            else:
-                front = True
+                    front = True
 
         if front:
             node = self.head
@@ -133,7 +135,7 @@ class DoublyLinkedList():
 
     def search_rec(self,
                    value: int,
-                   current_node: DoubleNode = None) -> DoubleNode:
+                   current_node: DoubleNode = None) -> Optional[DoubleNode]:
         """
         Search an element in the linked list
 
@@ -170,7 +172,7 @@ class DoublyLinkedList():
     def print_last(self):
         print(self.last.value)
 
-    def iter_items(self, forward: bool = True) -> int:
+    def iter_items(self, forward: bool = True) -> Generator[int, None, None]:
         """
         Generator function to iterate over nodes in Deque
 
@@ -195,7 +197,7 @@ class DoublyLinkedList():
             else:
                 current_node = current_node.previous
 
-    def __repr__(self) -> None:
+    def __repr__(self) -> str:
         """
         Represent the Deque in a string
 
