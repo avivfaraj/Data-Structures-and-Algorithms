@@ -1,4 +1,5 @@
 from Node import Node
+from typing import Generator, Optional
 
 
 class Stack():
@@ -37,7 +38,7 @@ class Stack():
 
         return False
 
-    def top(self) -> int:
+    def top(self) -> Optional[int]:
         """
         Top of the Stack
 
@@ -58,7 +59,7 @@ class Stack():
         self.head = newNode
         self.size += 1
 
-    def pop(self) -> int:
+    def pop(self) -> Optional[int]:
         """
         Remove top node from the Stack
 
@@ -67,7 +68,7 @@ class Stack():
         """
 
         if self.head is None:
-            return
+            return None
 
         val = self.head.value
         self.head = self.head.next
@@ -75,7 +76,7 @@ class Stack():
 
         return val
 
-    def get_item(self, pop: bool = True) -> int:
+    def get_item(self, pop: bool = True) -> Generator[int, bool, None]:
         """
         Generator function to iterate over nodes in Stack
 
