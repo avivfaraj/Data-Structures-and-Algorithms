@@ -1,4 +1,5 @@
 from Node import Node
+from typing import Optional, Generator
 
 
 class Queue():
@@ -46,7 +47,7 @@ class Queue():
 
         return False
 
-    def front(self) -> int:
+    def front(self) -> Optional[int]:
         """
         Front of the Queue
 
@@ -75,13 +76,13 @@ class Queue():
 
         self.size += 1
 
-    def dequeue(self) -> int:
+    def dequeue(self) -> Optional[int]:
         """
         Remove the front node of Queue
         """
         # Empty queue
         if self.head is None:
-            return
+            return None
 
         val = self.head.value
         # Moving to the next in line
@@ -94,7 +95,7 @@ class Queue():
 
         return val
 
-    def get_item(self, pop: bool = True) -> int:
+    def get_item(self, pop: bool = True) -> Generator[int, bool, None]:
         """
         Generator function to iterate over nodes in Queue
 
@@ -115,7 +116,7 @@ class Queue():
 
             yield val
 
-    def __repr__(self) -> None:
+    def __repr__(self) -> str:
         """
         Represent the Queue in a string
 
@@ -134,7 +135,7 @@ class Queue():
 
         return output + "Tail"
 
-    def __len__(self):
+    def __len__(self) -> int:
         """
         Return:
         Length of the Deque (int)
