@@ -1,11 +1,12 @@
 import math
 import random
+from typing import List
 
 
 class Prime():
     def __init__(self, n: int = 100):
         self.rand = self.find_prime(n)
-        self._prev = []
+        self._prev: List[int] = []
 
     # Setters and Getters
     @property

@@ -3,7 +3,7 @@ from General import swap
 from General import test
 
 
-def insertion_sort(arr: List) -> None:
+def insertion_sort(arr: List[int]) -> None:
     """
     Function that implements Insertion Sort O(n^2)
 

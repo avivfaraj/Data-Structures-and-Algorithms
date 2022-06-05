@@ -3,7 +3,7 @@ from General import test
 from typing import List
 
 
-def bubble_sort(arr: List) -> None:
+def bubble_sort(arr: List[int]) -> None:
     """
     Function that implements Bubble Sort O(n^2)
 

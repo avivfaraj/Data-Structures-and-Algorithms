@@ -32,7 +32,7 @@ def recursive_iteration(arr: List[int],
                         stop: int) -> Optional[int]:
 
     if start > stop:
-        return
+        return None
 
     middle = int(start + (stop - start) / 2)
 

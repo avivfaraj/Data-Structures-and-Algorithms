@@ -1,9 +1,9 @@
 import random
 import time
-from typing import List
+from typing import List, Callable
 
 
-def swap(arr: List, a: int, b: int) -> None:
+def swap(arr: List[int], a: int, b: int) -> None:
     """
     Swap elements in an array
 
@@ -21,7 +21,7 @@ def swap(arr: List, a: int, b: int) -> None:
         print("** Error ** One or more indices is invalid")
 
 
-def is_sorted(arr: List) -> bool:
+def is_sorted(arr: List[int]) -> bool:
     """
     Check wether an array is sorted or not
 
@@ -40,7 +40,7 @@ def is_sorted(arr: List) -> bool:
     return True
 
 
-def test(num: int, fun) -> None:
+def test(num: int, fun: Callable[[List[int]], None]) -> None:
     """
     Run test of the quick sort algorithm
 

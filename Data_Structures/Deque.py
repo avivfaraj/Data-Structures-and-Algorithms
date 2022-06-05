@@ -1,4 +1,5 @@
 from Node import DoubleNode
+from typing import Generator, Optional
 
 
 class Deque():
@@ -46,7 +47,7 @@ class Deque():
 
         return False
 
-    def front(self) -> int:
+    def front(self) -> Optional[int]:
         """
         Front of the Deque
 
@@ -58,7 +59,7 @@ class Deque():
 
         return self.head.value
 
-    def back(self) -> int:
+    def back(self) -> Optional[int]:
         """
         Back of the Deque
 
@@ -107,7 +108,7 @@ class Deque():
 
         self.size += 1
 
-    def pop_front(self) -> int:
+    def pop_front(self) -> Optional[int]:
         """
         Remove the node in the front of the Deque
 
@@ -115,7 +116,7 @@ class Deque():
         Value of the item in front (int), None if empty.
         """
         if self.head is None:
-            return
+            return None
 
         val = self.head.value
 
@@ -133,7 +134,7 @@ class Deque():
 
         return val
 
-    def pop_back(self) -> int:
+    def pop_back(self) -> Optional[int]:
         """
         Remove the node in the end of the Deque
 
@@ -141,7 +142,7 @@ class Deque():
         Value of the item in end (int), None if empty.
         """
         if self.tail is None:
-            return
+            return None
 
         val = self.tail.value
 
@@ -159,7 +160,9 @@ class Deque():
 
         return val
 
-    def get_item(self, forward: bool = True, pop: bool = True) -> int:
+    def get_item(self,
+                 forward: bool = True,
+                 pop: bool = True) -> Generator[int, None, None]:
         """
         Generator function to iterate over nodes in Deque
 
@@ -187,7 +190,7 @@ class Deque():
 
             yield val
 
-    def __repr__(self) -> None:
+    def __repr__(self) -> str:
         """
         Represent the Deque in a string
 
@@ -206,7 +209,7 @@ class Deque():
 
         return output[:-2] + " Tail"
 
-    def __len__(self) -> int:
+    def __len__(self):
         """
         Return:
         Length of the Deque (int)
