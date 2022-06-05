@@ -160,7 +160,9 @@ class Deque():
 
         return val
 
-    def get_item(self, forward: bool = True, pop: bool = True) -> Generator[int, None, None]:
+    def get_item(self,
+                 forward: bool = True,
+                 pop: bool = True) -> Generator[int, None, None]:
         """
         Generator function to iterate over nodes in Deque
 

@@ -1,6 +1,6 @@
 from Node import BTNode
-import matplotlib.pyplot as plt # type: ignore
-import networkx as nx # type: ignore
+import matplotlib.pyplot as plt  # type: ignore
+import networkx as nx  # type: ignore
 from typing import Optional
 
 
