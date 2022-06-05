@@ -1,6 +1,7 @@
 from Node import BTNode
-import matplotlib.pyplot as plt
-import networkx as nx
+import matplotlib.pyplot as plt # type: ignore
+import networkx as nx # type: ignore
+from typing import Optional
 
 
 class BinaryTree():
@@ -90,7 +91,7 @@ class BinaryTree():
 
     def insert_recursive(self,
                          value: int,
-                         current_node: BTNode) -> None:
+                         current_node: BTNode) -> BTNode:
         """
         Push a new node to the end of the Deque
         """
@@ -110,7 +111,7 @@ class BinaryTree():
 
         return current_node
 
-    def print(self, order: str = "pre") -> str:
+    def print(self, order: str = "pre") -> None:
 
         if order == "pre":
             self.preorder_rec(self.root)
@@ -170,7 +171,7 @@ class BinaryTree():
 
     def max(self,
             current_node: BTNode = None,
-            initial: bool = True):
+            initial: bool = True) -> Optional[int]:
 
         # Ensure current node points at the root at the initial run
         if initial:
@@ -191,14 +192,14 @@ class BinaryTree():
 
     def delete(self,
                value: int,
-               mors: bool = True):
+               mors: bool = True) -> None:
 
         self.root = self.delete_value(value, self.root, mors)
 
     def delete_value(self,
                      value: int,
                      current_node: BTNode = None,
-                     mors: bool = True):
+                     mors: bool = True) -> Optional[BTNode]:
 
         if not current_node:
             return None
@@ -216,7 +217,7 @@ class BinaryTree():
 
     def delete_node(self,
                     current_node: BTNode = None,
-                    mors: bool = True):
+                    mors: bool = True) -> Optional[BTNode]:
 
         if not current_node.left:
             return current_node.right
@@ -246,7 +247,7 @@ class BinaryTree():
 
         return current_node
 
-    def draw_bst(self):
+    def draw_bst(self) -> None:
 
         # Initialize Directed Graph
         G = nx.DiGraph()
@@ -271,7 +272,7 @@ class BinaryTree():
     def draw_recursive(self,
                        graph,
                        current_node: BTNode,
-                       prev_node: BTNode):
+                       prev_node: BTNode) -> None:
 
         if current_node:
             graph.add_node(current_node.value)
@@ -280,9 +281,11 @@ class BinaryTree():
 
                 graph.add_edge(prev_node.value,
                                current_node.value)
+            if current_node.left:
+                self.draw_recursive(graph, current_node.left, current_node)
 
-            self.draw_recursive(graph, current_node.left, current_node)
-            self.draw_recursive(graph, current_node.right, current_node)
+            if current_node.right:
+                self.draw_recursive(graph, current_node.right, current_node)
 
 
 def test():
