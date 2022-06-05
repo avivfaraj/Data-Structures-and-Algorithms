@@ -100,7 +100,8 @@ class LinkedList():
     def search_rec(self,
                    value: int,
                    current_node: Node = None,
-                   previous_node: Node = None) -> Tuple[Optional[Node], Optional[Node]]:
+                   previous_node: Node = None
+                   ) -> Tuple[Optional[Node], Optional[Node]]:
         """
         Search an element in the linked list
 
