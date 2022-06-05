@@ -1,5 +1,5 @@
 from Node import Node
-from typing import Tuple
+from typing import Tuple, Generator, Optional
 
 
 class LinkedList():
@@ -65,7 +65,7 @@ class LinkedList():
             except TypeError:
                 return False
 
-            if prev_node:
+            if node and prev_node:
                 prev_node.next = node.next
                 del node
                 return True
@@ -100,7 +100,7 @@ class LinkedList():
     def search_rec(self,
                    value: int,
                    current_node: Node = None,
-                   previous_node: Node = None) -> Tuple[Node, Node]:
+                   previous_node: Node = None) -> Tuple[Optional[Node], Optional[Node]]:
         """
         Search an element in the linked list
 
@@ -114,7 +114,7 @@ class LinkedList():
         # Ensure end of list
         if not current_node:
             # Item does not exist
-            return None
+            return (None, previous_node)
 
         # Ensure item exists
         if current_node.value == value:
@@ -130,14 +130,14 @@ class LinkedList():
         Return:
         True if element exists in the list, False otherwise.
         """
-        node = self.search_rec(value, self.head)
+        node, _ = self.search_rec(value, self.head)
 
         if node:
             return True
 
         return False
 
-    def iter_items(self) -> int:
+    def iter_items(self) -> Generator[int, None, None]:
         """
         Generator function to iterate over nodes in Deque
 
@@ -155,7 +155,7 @@ class LinkedList():
             yield current_node.value
             current_node = current_node.next
 
-    def __repr__(self) -> None:
+    def __repr__(self) -> str:
         """
         Represent the Deque in a string
 
