@@ -2,7 +2,7 @@ from General import test
 from typing import List
 
 
-def merge(arr: List, start: int, middle: int, stop: int) -> None:
+def merge(arr: List[int], start: int, middle: int, stop: int) -> None:
     """
     Merge two sorted lists
 
@@ -32,7 +32,7 @@ def merge(arr: List, start: int, middle: int, stop: int) -> None:
             j += 1
 
 
-def merge_sort(arr: List, start: int, stop: int) -> None:
+def merge_sort(arr: List[int], start: int, stop: int) -> None:
     """
     Implementation of merge sort
 
@@ -59,7 +59,7 @@ def merge_sort(arr: List, start: int, stop: int) -> None:
     merge(arr, start, middle, stop)
 
 
-def msort(arr: List):
+def msort(arr: List[int]):
     merge_sort(arr, 0, len(arr)-1)
 
 

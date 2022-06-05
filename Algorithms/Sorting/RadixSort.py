@@ -4,7 +4,7 @@ import math
 from collections import defaultdict
 
 
-def radix_sort(arr: List[int]) -> None:
+def radix_sort(arr: List[int]) -> List[int]:
     """
     Implementation of Radix Sort
 

@@ -4,7 +4,7 @@ from General import test
 from typing import List
 
 
-def partition(arr: List, start: int, stop: int) -> int:
+def partition(arr: List[int], start: int, stop: int) -> int:
     """
     Sort part of the array around a random pivot
 
@@ -41,11 +41,11 @@ def partition(arr: List, start: int, stop: int) -> int:
     return i
 
 
-def qsort(arr: List):
+def qsort(arr: List[int]):
     quick_sort(arr, 0, len(arr) - 1)
 
 
-def quick_sort(arr: List, start: int, stop: int):
+def quick_sort(arr: List[int], start: int, stop: int):
     """
     Recursive function that implements quick sort
 
