@@ -1,6 +1,5 @@
 import random
-from General import swap
-from General import test
+from utils import time_sorted, swap
 from typing import List
 
 
@@ -62,4 +61,4 @@ def quick_sort(arr: List[int], start: int, stop: int):
 
 
 if __name__ == "__main__":
-    test(100, qsort)
+    time_sorted(1000, quick_sort)

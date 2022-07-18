@@ -1,5 +1,4 @@
-from General import swap
-from General import test
+from utils import swap, time_sorted
 from typing import List
 
 
@@ -30,4 +29,4 @@ def bubble_sort(arr: List[int]) -> None:
 
 
 if __name__ == "__main__":
-    test(1000, bubble_sort)
+    time_sorted(1000, bubble_sort)

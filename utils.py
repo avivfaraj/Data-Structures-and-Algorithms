@@ -18,7 +18,7 @@ def swap(arr: List[int], a: int, b: int) -> None:
         # Swap array's elements in indices a,b
         arr[a], arr[b] = arr[b], arr[a]
     else:
-        print("** Error ** One or more indices is invalid")
+        raise IndexError("** Error ** One or more indices is invalid")
 
 
 def is_sorted(arr: List[int]) -> bool:
@@ -40,7 +40,7 @@ def is_sorted(arr: List[int]) -> bool:
     return True
 
 
-def test(num: int, fun: Callable[[List[int]], None]) -> None:
+def time_sorted(num: int, fun: Callable[[List[int]], None]) -> None:
     """
     Run test of the quick sort algorithm
 
@@ -59,13 +59,18 @@ def test(num: int, fun: Callable[[List[int]], None]) -> None:
     # Print array before sorting
     print(f"Unsorted array: {arr}")
     print()
-    # Measure time of sorting
+
+    # print(fun.__name__)
+    # Measure start time of sorting
     start = time.time()
 
     # Sort
-    fun(arr)
+    if fun.__name__ in ("merge_sort", "quick_sort"):
+        fun(arr, 0, len(arr) - 1)
+    else:
+        fun(arr)
 
-    # Measure time of sorting
+    # Measure end time of sorting
     stop = time.time()
 
     if is_sorted(arr):

@@ -1,6 +1,5 @@
 from typing import List
-from General import swap
-from General import test
+from utils import time_sorted, swap
 
 
 def insertion_sort(arr: List[int]) -> None:
@@ -21,4 +20,4 @@ def insertion_sort(arr: List[int]) -> None:
 
 
 if __name__ == "__main__":
-    test(1000, insertion_sort)
+    time_sorted(100, insertion_sort)

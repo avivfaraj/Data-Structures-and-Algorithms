@@ -1,4 +1,4 @@
-from General import test
+from utils import time_sorted
 from typing import List
 
 
@@ -59,9 +59,5 @@ def merge_sort(arr: List[int], start: int, stop: int) -> None:
     merge(arr, start, middle, stop)
 
 
-def msort(arr: List[int]):
-    merge_sort(arr, 0, len(arr)-1)
-
-
 if __name__ == "__main__":
-    test(10, msort)
+    time_sorted(1000, merge_sort)
