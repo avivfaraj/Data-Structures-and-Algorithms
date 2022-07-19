@@ -1,4 +1,4 @@
-from General import is_sorted
+from utils import is_sorted
 from typing import List
 import math
 from collections import defaultdict

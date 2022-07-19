@@ -1,4 +1,3 @@
-from Test import test_generators, test
 from typing import List, Optional, Generator
 
 
@@ -55,10 +54,3 @@ def recursive_iteration(arr: List[int],
         return start
 
     return recursive_iteration(arr, item, start + 1, stop)
-
-
-if __name__ == "__main__":
-    test(linear_recursive)
-    test(linear_search)
-    test_generators(linear_recursive_gen)
-    test_generators(linear_search_gen)

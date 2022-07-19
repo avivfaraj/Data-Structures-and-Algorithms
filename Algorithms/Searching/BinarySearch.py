@@ -1,4 +1,3 @@
-from Test import test_sorted
 from typing import Optional, List
 
 
@@ -43,8 +42,3 @@ def recursive_iteration(arr: List[int],
         return recursive_iteration(arr, item, start, middle - 1)
 
     return recursive_iteration(arr, item, middle + 1, stop)
-
-
-if __name__ == "__main__":
-    test_sorted(binary_search)
-    test_sorted(binary_recursive)
