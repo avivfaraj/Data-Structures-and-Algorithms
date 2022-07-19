@@ -1,4 +1,4 @@
-from Prime import Prime
+from Algorithms.General.Prime import Prime
 
 
 def rol_hash(text: str,

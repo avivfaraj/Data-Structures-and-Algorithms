@@ -40,7 +40,9 @@ def is_sorted(arr: List[int]) -> bool:
     return True
 
 
-def time_sorted(num: int, fun: Callable[[List[int]], None]) -> None:
+def time_sorted(num: int,
+                fun: (Callable[[List[int], int, int], None] |
+                      Callable[[List[int]], None])) -> None:
     """
     Run test of the quick sort algorithm
 
@@ -66,9 +68,9 @@ def time_sorted(num: int, fun: Callable[[List[int]], None]) -> None:
 
     # Sort
     if fun.__name__ in ("merge_sort", "quick_sort"):
-        fun(arr, 0, len(arr) - 1)
+        fun(arr, 0, len(arr) - 1)  # type: ignore
     else:
-        fun(arr)
+        fun(arr)  # type: ignore
 
     # Measure end time of sorting
     stop = time.time()

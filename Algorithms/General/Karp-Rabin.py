@@ -1,5 +1,5 @@
-from Rolling_Hash import rol_hash
-from Prime import Prime
+from Algorithms.General.Rolling_Hash import rol_hash
+from Algorithms.General.Prime import Prime
 
 
 def karp_rabin_randomized(text: str,

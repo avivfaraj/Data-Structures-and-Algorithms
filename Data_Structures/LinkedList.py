@@ -1,4 +1,4 @@
-from Node import Node
+from Data_Structures.Node import Node
 from typing import Tuple, Generator, Optional
 
 

@@ -1,4 +1,4 @@
-from Node import DoubleNode
+from Data_Structures.Node import DoubleNode
 from typing import Generator, Optional
 
 

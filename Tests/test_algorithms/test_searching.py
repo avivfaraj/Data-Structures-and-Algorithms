@@ -1,6 +1,9 @@
-from typing import NewType, Callable, List, Optional, Generator
+from typing import Callable, List, Optional, Generator
 from Algorithms.Searching.BinarySearch import binary_search, binary_recursive
-from Algorithms.Searching.LinearSearch import linear_search, linear_search_gen, linear_recursive, linear_recursive_gen
+from Algorithms.Searching.LinearSearch import linear_search, linear_search_gen
+from Algorithms.Searching.LinearSearch import linear_recursive
+from Algorithms.Searching.LinearSearch import linear_recursive_gen
+
 import pytest
 
 
@@ -37,6 +40,7 @@ def test_generators(fun: Callable[[List[int], int],
     i = fun(arr, 10)
     assert next(i) == 1
 
+
 @pytest.mark.parametrize("fun",
                          [binary_search,
                           binary_recursive])
@@ -44,4 +48,4 @@ def test_binary(fun: Callable[[List[int], int], Optional[int]]) -> None:
     arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     assert fun(arr, 4) == 3
     assert fun(arr, 8) == 7
-    assert fun(arr, 12) == None
+    assert fun(arr, 12) is None

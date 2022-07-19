@@ -1,4 +1,4 @@
-from Node import BTNode
+from Data_Structures.Node import BTNode
 import matplotlib.pyplot as plt  # type: ignore
 import networkx as nx  # type: ignore
 from typing import Optional
@@ -311,7 +311,7 @@ def test():
     test.print(order="pre")
     test.delete(6)
     test.print(order="pre")
-    test.draw_bst()
+    # test.draw_bst()
 
 
 if __name__ == "__main__":
