@@ -1,7 +1,7 @@
 from Algorithms.General.Rolling_Hash import rol_hash
 from Algorithms.General.Prime import Prime
-
 import pytest
+
 
 @pytest.mark.parametrize("sample_str, n",
                          [("This is just a test to check that rolling hash matches regular hash", 4),
@@ -16,7 +16,7 @@ def test_rolling_hash(sample_str: str, n: int) -> None:
     sample_str = "This is just a test to check that rolling hash matches regular hash"
 
     # Window size
-    n = 4 
+    n = 4
 
     # Loop over windows with size 'n'
     for i in range(len(sample_str) - n):
@@ -34,7 +34,7 @@ def test_rolling_hash(sample_str: str, n: int) -> None:
         # First iteration - no previous hash
         if i == 0:
             hash_ = rol_hash(sub_str, prime_num)
-        
+
         # Other iterations - subtract first char contribution
         # and add the new char's contribution to the overall hash
         else:
@@ -42,4 +42,3 @@ def test_rolling_hash(sample_str: str, n: int) -> None:
 
         # Ensure both hashes are the same!
         assert hash_ == reg_hash, "Something is wrong"
-
